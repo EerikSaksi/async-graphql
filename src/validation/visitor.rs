@@ -564,6 +564,7 @@ fn visit_operation_definition<'a, V: Visitor<'a>>(
     };
     if let Some(root_name) = root_name {
         println!("root_name {}", root_name);
+        println!("root_name {:?}", ctx.registry.types.keys());
         ctx.with_type(Some(&ctx.registry.types[&*root_name]), |ctx| {
             visit_variable_definitions(v, ctx, &operation.node.variable_definitions);
             visit_directives(v, ctx, &operation.node.directives);

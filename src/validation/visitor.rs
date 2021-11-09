@@ -557,12 +557,12 @@ fn visit_operation_definition<'a, V: Visitor<'a>>(
     operation: &'a Positioned<OperationDefinition>,
 ) {
     v.enter_operation_definition(ctx, name, operation);
-    println!("{:?}", operation);
     let root_name = match &operation.node.ty {
         OperationType::Query => Some(&*ctx.registry.query_type),
         OperationType::Mutation => ctx.registry.mutation_type.as_deref(),
         OperationType::Subscription => ctx.registry.subscription_type.as_deref(),
     };
+    println!("{}", ctx.registry.query_type);
     if let Some(root_name) = root_name {
         println!("root_name {}", root_name);
         println!("{:?}", ctx.registry.types.keys());

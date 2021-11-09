@@ -562,10 +562,7 @@ fn visit_operation_definition<'a, V: Visitor<'a>>(
         OperationType::Mutation => ctx.registry.mutation_type.as_deref(),
         OperationType::Subscription => ctx.registry.subscription_type.as_deref(),
     };
-    println!("{}", ctx.registry.query_type);
     if let Some(root_name) = root_name {
-        println!("root_name {}", root_name);
-        println!("{:?}", ctx.registry.types.keys());
         ctx.with_type(Some(&ctx.registry.types[&*root_name]), |ctx| {
             visit_variable_definitions(v, ctx, &operation.node.variable_definitions);
             visit_directives(v, ctx, &operation.node.directives);

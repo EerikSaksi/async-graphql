@@ -69,7 +69,6 @@ pub fn is_valid_input_value(
             if let ConstValue::Null = value {
                 return None;
             }
-            println!("{:?}", registry.types.keys());
             match registry.types.get(type_name).unwrap() {
                 registry::MetaType::Scalar { is_valid, .. } => {
                     if is_valid(&value) {
